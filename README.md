@@ -19,7 +19,7 @@
 ### Association
 
 - has_many :items
-- has_one :buyer
+- has_many :buyer
 
 ## items テーブル
 
@@ -46,6 +46,17 @@
 | --------------- | ---------- | ------------------------------ |
 | user            | references | null: false, foreign_key :true |
 | item            | references | null: false, foreign_key :true |
+
+
+### Association
+
+- belongs_to :item
+- belongs_to :user
+
+## addresses テーブル
+
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
 | postal_code     | string     | null: false                    |
 | prefecture_id   | integer    | null: false                    |
 | municipality    | string     | null: false                    |
@@ -55,5 +66,4 @@
 
 ### Association
 
-- belongs_to :item
-- belongs_to :user
+- belongs_to :buyer
