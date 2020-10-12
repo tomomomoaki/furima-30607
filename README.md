@@ -19,7 +19,7 @@
 ### Association
 
 - has_many :items
-- has_one :card
+- has_one :buyer
 
 ## items テーブル
 
@@ -38,7 +38,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :card
+- has_one :buyer
 
 ## buyers テーブル
 
@@ -63,8 +63,8 @@
 | address         | string     | null: false                    |
 | house_number    | string     | -----------                    |
 | phone_number    | string     | null: false                    |
-| card            | references | null: false, foreign_key :true |
+| buyer           | references | null: false, foreign_key :true |
 
 ### Association
 
-- belongs_to :card
+- belongs_to :buyer
