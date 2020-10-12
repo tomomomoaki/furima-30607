@@ -19,7 +19,7 @@
 ### Association
 
 - has_many :items
-- has_many :buyer
+- has_many :buyers
 
 ## items テーブル
 
@@ -52,6 +52,7 @@
 
 - belongs_to :item
 - belongs_to :user
+- has_one :address
 
 ## addresses テーブル
 
@@ -63,6 +64,7 @@
 | address         | string     | null: false                    |
 | house_number    | string     | -----------                    |
 | phone_number    | string     | null: false                    |
+| buyer           | references | null: false, foreign_key :true |
 
 ### Association
 
