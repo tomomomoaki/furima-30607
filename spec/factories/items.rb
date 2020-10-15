@@ -2,12 +2,12 @@ FactoryBot.define do
   factory :item do
     name                    { Faker::Name.initials(number: 7) }
     explanation             { Faker::Lorem.sentence }
-    category_id             { rand(2..11)}
+    category_id             { rand(2..11) }
     status_id               { rand(2..7) }
     shipping_charge_id      { rand(2..3) }
     prefecture_id           { rand(2..48) }
-    days_to_ship_id         { rand(2..4)}
-    price                   { rand(300..9999999) }
+    days_to_ship_id         { rand(2..4) }
+    price                   { rand(300..9_999_999) }
     association :user
 
     after(:build) do |item|
