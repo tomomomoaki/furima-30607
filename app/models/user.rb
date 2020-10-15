@@ -20,4 +20,6 @@ class User < ApplicationRecord
     validates :last_name_key
     validates :first_name_key
   end
+
+  has_many :items
 end
