@@ -1,14 +1,12 @@
 class Item < ApplicationRecord
-  validates :image, presence: true
-  validates :name, presence: true
-
-  validates :price, presence: true
-  validates :price, numericality: { only_interger: true, message: 'は半角数字のみで記入してください' }
-  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'は300~9,999,999円で設定してください' }
-
-  validates :explanation, presence: true
-  validates :category_id, :status_id, :prefecture_id, :shipping_charge_id, :days_to_ship_id, presence: true
-  validates :category_id, :status_id, :prefecture_id, :shipping_charge_id, :days_to_ship_id, numericality: { other_than: 1 }
+  with_options presence: true do
+    validates :image
+    validates :name
+    validates :explanation
+    validates :price, numericality: { only_interger: true, message: 'は半角数字のみで記入してください' }
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'は300~9,999,999円で設定してください' }
+    validates :category_id, :status_id, :prefecture_id, :shipping_charge_id, :days_to_ship_id, numericality: { other_than: 1 }
+  end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
