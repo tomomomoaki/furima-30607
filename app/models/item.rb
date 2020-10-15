@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   validates :name, presence: true
   
   validates :price, presence: true
-  validates :price, numericality: {only_interger: true, message: 'は数字のみで記入してください' }
+  validates :price, numericality: {only_interger: true, message: 'は半角数字のみで記入してください' }
   validates  :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message:'は300~9,999,999円で設定してください'}
   
 
