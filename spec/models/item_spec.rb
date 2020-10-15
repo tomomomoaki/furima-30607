@@ -31,25 +31,50 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank", 'Category is not a number')
       end
+      it 'category_idが1だと登録できない' do
+        @item.category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
+      end
       it 'status_idが空だと登録できない' do
         @item.status_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Status can't be blank", 'Status is not a number')
+      end
+      it 'stasus_idが1だと登録できない' do
+        @item.status_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Status must be other than 1")
       end
       it 'shipping_charge_idが空だと登録できない' do
         @item.shipping_charge_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping charge can't be blank", 'Shipping charge is not a number')
       end
+      it 'shipping_charge_idが1だと登録できない' do
+        @item.shipping_charge_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping charge must be other than 1")
+      end
       it 'prefecture_idが空だと登録できない' do
         @item.prefecture_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank", 'Prefecture is not a number')
       end
+      it 'prefecture_idが1だと登録できない' do
+        @item.prefecture_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
+      end
       it 'days_to_ship_idが空だと登録できない' do
         @item.days_to_ship_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Days to ship can't be blank", 'Days to ship is not a number')
+      end
+      it 'days_to_ship_idが1だと登録できない' do
+        @item.days_to_ship_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Days to ship must be other than 1")
       end
       it 'priceが空だと登録できない' do
         @item.price = nil
