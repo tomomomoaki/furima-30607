@@ -1,10 +1,12 @@
 class ItemsController < ApplicationController
+  before_action :redirect_signin, only: :new
+
   def index
   end
 
   def new
+    
     @item = Item.new
-    redirect_signin
   end
 
   def create
