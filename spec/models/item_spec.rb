@@ -34,7 +34,7 @@ RSpec.describe Item, type: :model do
       it 'category_idが1だと登録できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1")
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
       end
       it 'status_idが空だと登録できない' do
         @item.status_id = nil
@@ -44,7 +44,7 @@ RSpec.describe Item, type: :model do
       it 'stasus_idが1だと登録できない' do
         @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status must be other than 1")
+        expect(@item.errors.full_messages).to include('Status must be other than 1')
       end
       it 'shipping_charge_idが空だと登録できない' do
         @item.shipping_charge_id = nil
@@ -54,7 +54,7 @@ RSpec.describe Item, type: :model do
       it 'shipping_charge_idが1だと登録できない' do
         @item.shipping_charge_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping charge must be other than 1")
+        expect(@item.errors.full_messages).to include('Shipping charge must be other than 1')
       end
       it 'prefecture_idが空だと登録できない' do
         @item.prefecture_id = nil
@@ -64,7 +64,7 @@ RSpec.describe Item, type: :model do
       it 'prefecture_idが1だと登録できない' do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
+        expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
       end
       it 'days_to_ship_idが空だと登録できない' do
         @item.days_to_ship_id = nil
@@ -74,7 +74,7 @@ RSpec.describe Item, type: :model do
       it 'days_to_ship_idが1だと登録できない' do
         @item.days_to_ship_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Days to ship must be other than 1")
+        expect(@item.errors.full_messages).to include('Days to ship must be other than 1')
       end
       it 'priceが空だと登録できない' do
         @item.price = nil
