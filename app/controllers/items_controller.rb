@@ -24,10 +24,8 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    #投稿者以外がurlで編集ページに遷移しようとすると、トップページへ遷移
-    unless current_user == @item.user
-      redirect_to root_path
-    end
+
+    redirect_to root_path unless current_user == @item.user
   end
 
   def update
