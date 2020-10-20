@@ -9,4 +9,4 @@ function sales_commission (){
     Profit.innerHTML = `${Math.floor(ProfitVal)}`;
   });
 };
-setInterval(sales_commission,1000);
+window.addEventListener("load", sales_commission);
