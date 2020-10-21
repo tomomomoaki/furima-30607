@@ -70,3 +70,4 @@
 
 - belongs_to :buyer
 
+
