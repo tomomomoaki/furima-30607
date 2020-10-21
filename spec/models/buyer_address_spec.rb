@@ -61,6 +61,11 @@ RSpec.describe BuyerAddress, type: :model do
         @buyer_address.valid?
         expect(@buyer_address.errors.full_messages).to include('Phone number は半角数字のみで記入してください')
       end
+      it 'phone_numberが11文字以上だと保存できないこと' do
+        @buyer_address.phone_number = '123456789012'
+        @buyer_address.valid?
+        expect(@buyer_address.errors.full_messages).to include('Phone number は11文字以下で記入してください')
+      end
     end
   end
 end
