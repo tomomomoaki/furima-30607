@@ -39,6 +39,6 @@ class BuyersController < ApplicationController
 
   def redirect_root
     redirect_to root_path if current_user == @item.user
-    redirect_to root_path if @item.buyer != nil
+    redirect_to root_path unless @item.buyer.nil?
   end
 end

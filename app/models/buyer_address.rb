@@ -9,7 +9,7 @@ class BuyerAddress
     validates :municipality
     validates :address
     validates :phone_number, numericality: { only_interger: true, message: 'は半角数字のみで記入してください' }
-    validates :phone_number, length: {maximum: 11, message: 'は11文字以下で記入してください'}
+    validates :phone_number, length: { maximum: 11, message: 'は11文字以下で記入してください' }
   end
 
   def save(current_user_id)

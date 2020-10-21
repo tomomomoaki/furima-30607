@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    redirect_to root_path if @item.buyer != nil
+    redirect_to root_path unless @item.buyer.nil?
   end
 
   def update
