@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   before_action :redirect_root, only: [:edit, :destroy]
 
   def index
+    @buyers = Buyer.all.includes(:user, :item, :address)
     @items = Item.all.includes(:user).order('created_at DESC')
   end
 
