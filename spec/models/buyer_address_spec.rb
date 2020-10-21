@@ -24,17 +24,17 @@ RSpec.describe BuyerAddress, type: :model do
       it 'postal_codeが空だと保存できないこと' do
         @buyer_address.postal_code = nil
         @buyer_address.valid?
-        expect(@buyer_address.errors.full_messages).to include("Postal code can't be blank", "Postal code is invalid. Include hyphen(-)")
+        expect(@buyer_address.errors.full_messages).to include("Postal code can't be blank", 'Postal code is invalid. Include hyphen(-)')
       end
       it 'postal_codeにハイフン(-)がないと保存できないこと' do
-        @buyer_address.postal_code = "1234567"
+        @buyer_address.postal_code = '1234567'
         @buyer_address.valid?
-        expect(@buyer_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        expect(@buyer_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
       it 'prefecture_idが1だと保存できないこと' do
         @buyer_address.prefecture_id = 1
         @buyer_address.valid?
-        expect(@buyer_address.errors.full_messages).to include("Prefecture must be other than 1")
+        expect(@buyer_address.errors.full_messages).to include('Prefecture must be other than 1')
       end
       it 'prefecture_idが空だと保存できないこと' do
         @buyer_address.prefecture_id = nil
@@ -54,12 +54,12 @@ RSpec.describe BuyerAddress, type: :model do
       it 'phone_numberが空だと保存できないこと' do
         @buyer_address.phone_number = nil
         @buyer_address.valid?
-        expect(@buyer_address.errors.full_messages).to include("Phone number can't be blank", "Phone number は半角数字のみで記入してください")
+        expect(@buyer_address.errors.full_messages).to include("Phone number can't be blank", 'Phone number は半角数字のみで記入してください')
       end
       it 'phone_numberに半角数字以外が含まれていると保存できないこと' do
-        @buyer_address.phone_number = "111-1111-1111"
+        @buyer_address.phone_number = '111-1111-1111'
         @buyer_address.valid?
-        expect(@buyer_address.errors.full_messages).to include("Phone number は半角数字のみで記入してください")
+        expect(@buyer_address.errors.full_messages).to include('Phone number は半角数字のみで記入してください')
       end
     end
   end

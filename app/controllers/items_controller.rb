@@ -26,9 +26,7 @@ class ItemsController < ApplicationController
 
   def edit
     @buyers.each do |buy|
-      if @item.id == buy.item_id 
-        redirect_to root_path
-      end
+      redirect_to root_path if @item.id == buy.item_id
     end
   end
 

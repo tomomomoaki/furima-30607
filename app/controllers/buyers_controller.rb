@@ -12,12 +12,12 @@ class BuyersController < ApplicationController
     if @buyer_address.valid?
       pay_item
       @buyer_address.save(current_user.id)
-      return redirect_to root_path
+      redirect_to root_path
     else
       render :index
     end
   end
-  
+
   private
 
   def buyer_params
@@ -25,7 +25,7 @@ class BuyersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: buyer_params[:token],
@@ -38,8 +38,6 @@ class BuyersController < ApplicationController
   end
 
   def redirect_root
-    if current_user == @item.user
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user == @item.user
   end
 end
