@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :destory]
   before_action :item_find, only: [:show, :edit, :update, :destroy]
-  before_action :bought_find, only: [:index, :show, :edit]
   before_action :redirect_root, only: [:edit, :destroy]
 
   def index
@@ -25,9 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @buyers.each do |buy|
-      redirect_to root_path if @item.id == buy.item_id
-    end
+    redirect_to root_path if @item.buyer != nil
   end
 
   def update
@@ -50,10 +47,6 @@ class ItemsController < ApplicationController
 
   def item_find
     @item = Item.find(params[:id])
-  end
-
-  def bought_find
-    @buyers = Buyer.all.includes(:user, :item, :address)
   end
 
   def redirect_root

@@ -1,14 +1,10 @@
 class BuyersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :item_find, only: [:index, :create]
-  before_action :bought_find, only: :index
   before_action :redirect_root, only: [:index, :create]
 
   def index
     @buyer_address = BuyerAddress.new
-    @buyers.each do |buy|
-      redirect_to root_path if @item.id == buy.item_id
-    end
   end
 
   def create
@@ -41,11 +37,8 @@ class BuyersController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
-  def bought_find
-    @buyers = Buyer.all.includes(:user, :item, :address)
-  end
-
   def redirect_root
     redirect_to root_path if current_user == @item.user
+    redirect_to root_path if @item.buyer != nil
   end
 end

@@ -9,14 +9,12 @@
     <div class='item-img-content'>
       <%= image_tag @item.image.variant(resize:'1000x1000') ,class:"item-box-img" %>
 
-      <% @buyers.each do |buy|%>
-        <% if @item.id == buy.item_id %>
-          <div class='sold-out'>
-            <span>Sold Out!!</span>
-          </div>
-        <%end%>
+      <% if @item.buyer != nil %>
+        <div class='sold-out'>
+          <span>Sold Out!!</span>
+        </div>
       <%end%>
-      
+
     </div>
     <div class="item-price-box">
       <span class="item-price">
