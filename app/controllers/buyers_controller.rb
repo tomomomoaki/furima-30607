@@ -1,9 +1,10 @@
 class BuyersController < ApplicationController
-  befre_action :authenticate_user!, only: [:index, :create]
+  before_action :authenticate_user!, only: [:index, :create]
+  before_action :item_find, only: [:index, :create]
+  before_action :redirect_root, only: [:index, :create]
 
   def index
     @buyer_address = BuyerAddress.new
-    @item = Item.find(params[:item_id])
   end
 
   def create
@@ -13,7 +14,6 @@ class BuyersController < ApplicationController
       @buyer_address.save(current_user.id)
       return redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       render :index
     end
   end
@@ -25,12 +25,21 @@ class BuyersController < ApplicationController
   end
 
   def pay_item
-    price = Item.find(params[:item_id]).price
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
-      amount: price,
+      amount: @item.price,
       card: buyer_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def item_find
+    @item = Item.find(params[:item_id])
+  end
+
+  def redirect_root
+    if current_user == @item.user
+      redirect_to root_path
+    end
   end
 end
