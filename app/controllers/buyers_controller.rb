@@ -1,4 +1,5 @@
 class BuyersController < ApplicationController
+  befre_action :authenticate_user!, only: [:index, :create]
 
   def index
     @buyer_address = BuyerAddress.new
