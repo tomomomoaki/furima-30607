@@ -4,9 +4,9 @@ class Item < ApplicationRecord
     validates :name
     validates :explanation
     validates :price, numericality: { only_interger: true, message: 'は半角数字のみで記入してください' }
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'は300~9,999,999円で設定してください' }
     validates :category_id, :status_id, :prefecture_id, :shipping_charge_id, :days_to_ship_id, numericality: { other_than: 1 }
   end
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'は300~9,999,999円で設定してください' }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
